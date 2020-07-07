@@ -1,6 +1,6 @@
-# fluttercollapse
+# Custom Flutter Widgets
 
-A new Flutter project.
+dummies sake
 
 ## Getting Started
 
