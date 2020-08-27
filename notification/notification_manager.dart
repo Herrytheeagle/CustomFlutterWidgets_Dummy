@@ -1,29 +1,46 @@
-// This is a basic Flutter widget test.
-// To perform an interaction with a widget in your test, use the WidgetTester utility that Flutter
-// provides. For example, you can send tap and scroll gestures. You can also use WidgetTester to
-// find child widgets in the widget tree, read text, and verify that the values of widget properties
-// are correct.
-
 import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
+import 'package:flutter/widgets.dart';
 
-import 'package:fluttercollapse/main.dart';
+//
+// class to generate SnackBar notifications everywhere in the app's codebase
+// without being limited to Scafold inherited widgets
+//
+class NotificationManager {
+  static BuildContext context;
+  static Color successBackgroundColor = Colors.black;
+  static Color errorBackgroundColor = Colors.red;
 
-void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(new MyApp());
+  static generateNewSuccessNotification(String message, {fast: false}) {
+    SnackBar newNotification = SnackBar(
+      content: Text(
+        message,
+        style: TextStyle(fontSize: 17),
+      ),
+      backgroundColor: successBackgroundColor,
+      duration: Duration(milliseconds: fast ? 500 : 1000),
+    );
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    if (context == null) {
+      return;
+    }
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    Scaffold.of(context).showSnackBar(newNotification);
+  }
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
-  });
+  static generateNewErrorNotification(String message, {fast: false}) {
+    SnackBar newNotification = SnackBar(
+      content: Text(
+        message,
+        style: TextStyle(fontSize: 17),
+      ),
+      backgroundColor: errorBackgroundColor,
+      duration: Duration(milliseconds: fast ? 500 : 1000),
+    );
+
+    if (context == null) {
+      return;
+    }
+
+    Scaffold.of(context).showSnackBar(newNotification);
+  }
 }
