@@ -16,14 +16,14 @@ class HomePage extends StatelessWidget {
             floating: false,
             pinned: true,
             flexibleSpace: new FlexibleSpaceBar(
-              title: new Text("Sliver App Bar"),
+              title: new Text("GEE Remote Conferencing"),
             ),
           ),
           new SliverFixedExtentList(
             itemExtent: 150.0,
             delegate:
                 new SliverChildBuilderDelegate((context, index) => new ListTile(
-                      title: new Text("List item $index"),
+                      title: new Text("Cohort $index"),
                     )),
           )
         ],
