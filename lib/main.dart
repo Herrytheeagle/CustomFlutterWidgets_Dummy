@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
             itemExtent: 150.0,
             delegate:
                 new SliverChildBuilderDelegate((context, index) => new ListTile(
-                      title: new Text("Cohort $index"),
+                      title: new Text("SCREEN $index"),
                     )),
           )
         ],
